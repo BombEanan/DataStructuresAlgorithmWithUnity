@@ -11,7 +11,47 @@ public class Know : MonoBehaviour {
     }
     void Awake(){
         Debug.Log("Awake");
+
+        //4^0+4^1+4^2
+        decimal totel = 1;
+        for(int i = 1;i<0;i++){
+            decimal mi = 1;
+            for(int j = 0;j<i;j++){
+                mi*=4;
+            }
+            totel+=mi;
+            mi=1;
+        }
+        //Debug.Log("totel:"+totel);
+
+        int[][] a = new int[3][] ;
+        a[0] = new int [5]{1,2,3,4,5};
+        a[1] = new int [3]{6,7,8};
+        a[2] = new int [4]{9,10,11,12};
+
+        int [][] b = new int[0][] ;
+
+        Debug.Log(Find(7,b) );
+ 
+        
+
     }
+
+    //遍历二维数组中是否含有某个整数
+    public bool Find(int target, int[][] array)
+    {
+        // write code here
+        for(int i=0;i<array.Length;i++){
+            for(int j=0;j<array[i].Length;j++){
+                if(array[i][j] == target){
+                    Debug.Log(array[i][j]);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     void EnAble(){
         Debug.Log("Enable");
     }
@@ -37,15 +77,15 @@ public class Know : MonoBehaviour {
     //物体渐渐消失
     IEnumerator Fade()
     {
-        // Color c = this.go.GetComponent<Renderer>().material.color;
-        // for (float a = 1f; a >= 0; a-=0.01f)
-        // {
+        Color c = this.go.GetComponent<Renderer>().material.color;
+        for (float a = 1f; a >= 0; a-=0.01f)
+        {
             
-        //     c.a = a;
-        //     Debug.Log(a);
-        //     this.go.GetComponent<Renderer>().material.color = c;
-        //     yield return new WaitForSeconds(0.1f);
-        // }
+            c.a = a;
+            //Debug.Log(a);
+            this.go.GetComponent<Renderer>().material.color = c;
+            yield return new WaitForSeconds(0.1f);
+        }
 
         while(true){
             
